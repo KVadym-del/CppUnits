@@ -13,7 +13,7 @@ namespace Units::Centimeters
 	class Centimeters : public BaseUnit::BaseUnit
 	{
 	public:
-		Centimeters() {};
+		Centimeters() = default;
 		explicit Centimeters(const Variant& variant)
 		{
 			std::visit([&](const auto& value) {
@@ -29,6 +29,7 @@ namespace Units::Centimeters
 		}
 
 		inline Centimeters operator=(const Millimeters::Millimeters& millimeters) const;
+		inline Centimeters operator=(const Meters::Meters& meters) const;
 
 		inline bool operator==(const Variant& variant) const override
 		{
@@ -85,7 +86,7 @@ namespace Units::Centimeters
 			return stream;
 		}
 
-		inline const Centimeters& operator+(const Variant& variant) const 
+		inline Centimeters operator+(const Variant& variant) const 
 		{
 			Float128 getValue;
 			std::visit([&](const auto& value) {
@@ -94,7 +95,7 @@ namespace Units::Centimeters
 			return Centimeters(Value_ + getValue);
 		}
 
-		inline const Centimeters& operator-(const Variant& variant) const
+		inline Centimeters operator-(const Variant& variant) const
 		{
 			Float128 getValue;
 			std::visit([&](const auto& value) {
@@ -103,7 +104,7 @@ namespace Units::Centimeters
 			return  Centimeters(Value_ - getValue);
 		}
 
-		inline const Centimeters& operator/(const Variant& variant) const
+		inline Centimeters operator/(const Variant& variant) const
 		{
 			Float128 getValue;
 			std::visit([&](const auto& value) {
@@ -112,19 +113,18 @@ namespace Units::Centimeters
 			return Centimeters(Value_ / getValue);
 		}
 
-		inline const Centimeters& operator*(const Variant& variant) const
+		inline Centimeters operator*(const Variant& variant) const
 		{
 			Float128 getValue;
 			std::visit([&](const auto& value) {
 				getValue = static_cast<Float128>(value);
 				}, variant);
-			return  Centimeters(Value_ * getValue);
+			return Centimeters(Value_ * getValue);
 		}
 
 		//-----------------------------------------------------------------------
 
-		compl Centimeters() override
-		{};
+		compl Centimeters() override = default;
 
 	private:
 		inline static Float128 Value_ = 0;
@@ -133,5 +133,4 @@ namespace Units::Centimeters
 	inline Centimeters operator"" _cm(Float128 value) { //TODO: Implement it later
 		return Centimeters(value);
 	}
-
 }

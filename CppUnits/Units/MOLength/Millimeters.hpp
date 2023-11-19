@@ -13,7 +13,7 @@ namespace Units::Millimeters
 	class Millimeters : public BaseUnit::BaseUnit
 	{
 	public:
-		Millimeters() {};
+		Millimeters() = default;
 		explicit Millimeters(const Variant& variant)
 		{
 			std::visit([&](const auto& value) {
@@ -77,7 +77,7 @@ namespace Units::Millimeters
 			return stream;
 		}
 
-		inline const Millimeters& operator+(const Variant& variant) const
+		inline Millimeters operator+(const Variant& variant) const
 		{
 			Float128 getValue;
 			std::visit([&](const auto& value) {
@@ -86,7 +86,7 @@ namespace Units::Millimeters
 			return Millimeters(Value_ + getValue);
 		}
 
-		inline const Millimeters& operator-(const Variant& variant) const
+		inline Millimeters operator-(const Variant& variant) const
 		{
 			Float128 getValue;
 			std::visit([&](const auto& value) {
@@ -95,7 +95,7 @@ namespace Units::Millimeters
 			return  Millimeters(Value_ - getValue);
 		}
 
-		inline const Millimeters& operator/(const Variant& variant) const
+		inline Millimeters operator/(const Variant& variant) const
 		{
 			Float128 getValue;
 			std::visit([&](const auto& value) {
@@ -104,7 +104,7 @@ namespace Units::Millimeters
 			return Millimeters(Value_ / getValue);
 		}
 
-		inline const Millimeters& operator*(const Variant& variant) const
+		inline Millimeters operator*(const Variant& variant) const
 		{
 			Float128 getValue;
 			std::visit([&](const auto& value) {
@@ -115,14 +115,9 @@ namespace Units::Millimeters
 
 		//-----------------------------------------------------------------------
 
-		compl Millimeters() override
-		{};
+		compl Millimeters() override = default;
 
 	private:
 		inline static Float128 Value_ = 0;
 	};
-
-	inline Millimeters operator"" _mm(Float128 value) { //TODO: Implement it later
-		return Millimeters(value);
-	}
 }

@@ -14,7 +14,7 @@ namespace Units::Meters
 	class Meters : public BaseUnit::BaseUnit
 	{
 	public:
-		Meters() {};
+		Meters() = default;
 		explicit Meters(const Variant& variant)
 		{
 			std::visit([&](const auto& value) {
@@ -87,7 +87,7 @@ namespace Units::Meters
 			return stream;
 		}
 
-		inline const Meters& operator+(const Variant& variant) const
+		inline Meters operator+(const Variant& variant) const
 		{
 			Float128 getValue;
 			std::visit([&](const auto& value) {
@@ -96,7 +96,7 @@ namespace Units::Meters
 			return Meters(Value_ + getValue);
 		}
 
-		inline const Meters& operator-(const Variant& variant) const
+		inline Meters operator-(const Variant& variant) const
 		{
 			Float128 getValue;
 			std::visit([&](const auto& value) {
@@ -105,7 +105,7 @@ namespace Units::Meters
 			return  Meters(Value_ - getValue);
 		}
 
-		inline const Meters& operator/(const Variant& variant) const
+		inline Meters operator/(const Variant& variant) const
 		{
 			Float128 getValue;
 			std::visit([&](const auto& value) {
@@ -114,7 +114,7 @@ namespace Units::Meters
 			return Meters(Value_ / getValue);
 		}
 
-		inline const Meters& operator*(const Variant& variant) const
+		inline Meters operator*(const Variant& variant) const
 		{
 			Float128 getValue;
 			std::visit([&](const auto& value) {
@@ -125,8 +125,7 @@ namespace Units::Meters
 
 		//-----------------------------------------------------------------------
 
-		compl Meters() override
-		{};
+		compl Meters() override = default;
 
 	private:
 		inline static Float128 Value_ = 0;

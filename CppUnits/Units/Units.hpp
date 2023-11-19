@@ -57,6 +57,11 @@ namespace Units::Centimeters
 	{
 		return Centimeters(Ratio::castToSi<Ratio::Centimeters_ratio>(millimeters()) / (Ratio::castToSi<Ratio::Millimeters_ratio>(1)));
 	}
+
+	inline Centimeters Centimeters::operator=(const Meters::Meters& meters) const
+	{
+		return Centimeters(Ratio::castToSi<Ratio::Centimeters_ratio>(meters()) / (Ratio::castToSi<Ratio::Meters_ratio>(1)));
+	}
 }
 
 namespace Units::Meters
@@ -72,4 +77,19 @@ namespace Units::Meters
 	}
 }
 
+/*
+namespace Units::Literals 
+{
+	inline Units::Meters_t operator"" _m(Resources::Float128 value) {
+		return Units::Meters_t(value);
+	}
 
+	inline Units::Centimeters_t operator"" _cm(Resources::Float128 value) {
+		return Units::Centimeters_t(value);
+	}
+
+	static inline Millimeters_t operator"" _mm(Resources::Float128 value) {
+		return Millimeters_t(value);
+	}
+}
+*/
