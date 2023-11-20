@@ -1,5 +1,5 @@
 # CppUnits
-It's simple header-only library for units of measurement in C++.
+It's a simple header-only library for units of measurement in C++.
 
 ## How to initialize Unit?
 Firstly include header file:
