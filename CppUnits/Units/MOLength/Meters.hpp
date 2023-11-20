@@ -29,8 +29,9 @@ namespace Units::Meters
 				}, variant);
 		}
 
-		inline Meters operator=(const Centimeters::Centimeters& centimeters) const; // <-
 		inline Meters operator=(const Millimeters::Millimeters& millimeters) const; // <-
+		inline Meters operator=(const Centimeters::Centimeters& centimeters) const; // <-
+		inline Meters operator=(const Kilometers::Kilometers& centimeters) const; // <-
 
 		inline bool operator==(const Variant& variant) const override
 		{

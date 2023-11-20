@@ -17,5 +17,6 @@ namespace Units::BaseUnit
 		virtual inline bool operator!=(const Variant& variant) const = 0;
 
 		virtual inline void operator()(const Variant& variant) const = 0;
+
 	};
 }

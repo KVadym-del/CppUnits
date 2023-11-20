@@ -36,6 +36,9 @@
     <ClInclude Include="CppUnits\Units\MOLength\Millimeters.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CppUnits\Units\MOLength\Kilometers.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppUnits\Test\Test.cpp">

@@ -30,6 +30,7 @@ namespace Units::Centimeters
 
 		inline Centimeters operator=(const Millimeters::Millimeters& millimeters) const;
 		inline Centimeters operator=(const Meters::Meters& meters) const;
+		inline Centimeters operator=(const Kilometers::Kilometers& kilometers) const;
 
 		inline bool operator==(const Variant& variant) const override
 		{
@@ -129,8 +130,4 @@ namespace Units::Centimeters
 	private:
 		inline static Float128 Value_ = 0;
 	};
-
-	inline Centimeters operator"" _cm(Float128 value) { //TODO: Implement it later
-		return Centimeters(value);
-	}
 }
