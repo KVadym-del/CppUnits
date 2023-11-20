@@ -30,3 +30,8 @@
 *.exe
 *.out
 *.app
+
+# Debug files
+/CppUnits/x64/Debug
+/.vs/CppUnits
+/x64/Debug
