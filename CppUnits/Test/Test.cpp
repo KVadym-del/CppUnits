@@ -9,7 +9,7 @@ void print(const Resources::Float128& number)
 	std::cout << std::fixed << number << std::endl;
 }
 
-void print(const Millimeters_t& number)
+void print(const Kilometers_t& number)
 {
 	std::cout << std::fixed << number << std::endl;
 }
@@ -23,16 +23,17 @@ int main(void)
 	Kilometers_t kilometers;
 	kilometers = centimeters;
 
-	centimeters = centimeters + 120;
+	//centimeters = centimeters + 120;
 	meters = centimeters;
-	millimeters = kilometers;
+	millimeters = centimeters;
+	kilometers = millimeters;
 
 	//std::cin >> centimeters;
 
 	//print(meters());
-	//print(millimeters);
+	print(kilometers);
 
-	print(kilometers());
+	//print(kilometers());
 	kilometers += 1;
-	print(kilometers());
+	//print(kilometers());
 }

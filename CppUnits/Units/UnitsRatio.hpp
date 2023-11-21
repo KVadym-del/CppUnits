@@ -26,12 +26,4 @@ namespace Units::Ratio
 	using Meters_ratio			=	std::ratio<1>;
 	using Kilometers_ratio		=	std::kilo;
 
-
-
-
-	/* TODO: fix this
-	using Meters_duration = std::chrono::duration<Resources::Float128> ;
-	using Centimeters_duration = std::chrono::duration<Resources::Float128, std::centi> ;
-	using Millimeters_duration = std::chrono::duration<Resources::Float128, std::milli> ;
-	*/
 }

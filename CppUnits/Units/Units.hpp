@@ -35,99 +35,86 @@ namespace Units
 	using Meters_t			=	Meters::Meters;
 	using Kilometers_t		=	Kilometers::Kilometers;
 
-	template<typename Generation, typename GenerationRatio, typename FromRatio, typename Value>
-	inline constexpr Generation convert(const Value& value)
+	template<typename To, typename ToRatio, typename FromRatio, typename FromValue>
+	inline constexpr To convert(const FromValue& fromValue)
 	{
-		return Generation(Ratio::castToSi<GenerationRatio>(value()) / Ratio::castToSi<FromRatio>(1));
+		return To(Ratio::castToSi<ToRatio>(fromValue()) / Ratio::castToSi<FromRatio>(1));
 	}
 }
 
 namespace Units::Millimeters
 {
-	// return Units::convert<Millimeters, Ratio::Meters_ratio, Ratio::Centimeters_ratio, Centimeters::Centimeters>(centimeters);
+	using namespace Ratio;
 	inline Millimeters Millimeters::operator=(const Centimeters::Centimeters& centimeters) const
 	{
-		return Millimeters((Ratio::castToSi<Ratio::Millimeters_ratio>(centimeters())) / Ratio::castToSi<Ratio::Centimeters_ratio>(1));
+		return convert<Millimeters_t, Millimeters_ratio, Centimeters_ratio, Centimeters_t>(centimeters);
 	}
 
 	inline Millimeters Millimeters::operator=(const Meters::Meters& meters) const
 	{
-		return Millimeters((Ratio::castToSi<Ratio::Millimeters_ratio>(meters())) / Ratio::castToSi<Ratio::Meters_ratio>(1));
+		return convert<Millimeters_t, Millimeters_ratio, Meters_ratio, Meters_t>(meters);
 	}
 
 	inline Millimeters Units::Millimeters::Millimeters::operator=(const Kilometers::Kilometers& kilometers) const
 	{
-		return Millimeters((Ratio::castToSi<Ratio::Millimeters_ratio>(kilometers())) / Ratio::castToSi<Ratio::Kilometers_ratio>(1));
+		return convert<Millimeters_t, Millimeters_ratio, Kilometers_ratio, Kilometers_t>(kilometers);
 	}
 }
 
 namespace Units::Centimeters
 {
+	using namespace Ratio;
 	inline Centimeters Centimeters::operator=(const Millimeters::Millimeters& millimeters) const
 	{
-		return Centimeters(Ratio::castToSi<Ratio::Centimeters_ratio>(millimeters()) / (Ratio::castToSi<Ratio::Millimeters_ratio>(1)));
+		return convert<Centimeters_t, Centimeters_ratio, Millimeters_ratio, Millimeters_t>(millimeters);
 	}
 
 	inline Centimeters Centimeters::operator=(const Meters::Meters& meters) const
 	{
-		return Centimeters(Ratio::castToSi<Ratio::Centimeters_ratio>(meters()) / (Ratio::castToSi<Ratio::Meters_ratio>(1)));
+		return convert<Centimeters_t, Centimeters_ratio, Meters_ratio, Meters_t>(meters);
 	}
 
 	inline Centimeters Units::Centimeters::Centimeters::operator=(const Kilometers::Kilometers& kilometers) const
 	{
-		return Centimeters(Ratio::castToSi<Ratio::Centimeters_ratio>(kilometers()) / (Ratio::castToSi<Ratio::Kilometers_ratio>(1)));
+		return convert<Centimeters_t, Centimeters_ratio, Kilometers_ratio, Kilometers_t>(kilometers);
 	}
 }
 
 namespace Units::Meters
 {
+	using namespace Ratio;
 	inline Meters Meters::operator=(const Millimeters::Millimeters& millimeters) const
 	{
-		return Meters(Ratio::castToSi<Ratio::Meters_ratio>(millimeters()) / (Ratio::castToSi<Ratio::Millimeters_ratio>(1)));
+		return convert<Meters_t, Meters_ratio, Millimeters_ratio, Millimeters_t>(millimeters);
 	}
 
 	inline Meters Meters::operator=(const Centimeters::Centimeters& centimeters) const
 	{
-		return Meters(Ratio::castToSi<Ratio::Meters_ratio>(centimeters()) / (Ratio::castToSi<Ratio::Centimeters_ratio>(1)));
+		return convert<Meters_t, Meters_ratio, Centimeters_ratio, Centimeters_t>(centimeters);
 	}
 
 	inline Meters Units::Meters::Meters::operator=(const Kilometers::Kilometers& kilometers) const
 	{
-		return  Meters(Ratio::castToSi<Ratio::Meters_ratio>(kilometers()) / (Ratio::castToSi<Ratio::Kilometers_ratio>(1)));
+		return convert<Meters_t, Meters_ratio, Kilometers_ratio, Kilometers_t>(kilometers);
 	}
 }
 
+
 namespace Units::Kilometers
 {
+	using namespace Ratio;
 	inline Kilometers Kilometers::operator=(const Millimeters::Millimeters& millimeters) const
 	{
-		return Kilometers(Ratio::castToSi<Ratio::Kilometers_ratio>(millimeters()) / (Ratio::castToSi<Ratio::Millimeters_ratio>(1)));
+		return convert<Kilometers_t, Kilometers_ratio, Millimeters_ratio, Millimeters_t>(millimeters);
 	}
 
 	inline Kilometers Units::Kilometers::Kilometers::operator=(const Centimeters::Centimeters& centimeters) const
 	{
-		return Kilometers(Ratio::castToSi<Ratio::Kilometers_ratio>(centimeters()) / (Ratio::castToSi<Ratio::Centimeters_ratio>(1)));
+		return convert<Kilometers_t, Kilometers_ratio, Centimeters_ratio, Centimeters_t>(centimeters);
 	}
 
 	inline Kilometers Kilometers::operator=(const Meters::Meters& meters) const
 	{
-		return Kilometers(Ratio::castToSi<Ratio::Kilometers_ratio>(meters()) / (Ratio::castToSi<Ratio::Meters_ratio>(1)));
+		return convert<Kilometers_t, Kilometers_ratio, Meters_ratio, Meters_t>(meters);
 	}
 }
-
-/*
-namespace Units::Literals 
-{
-	inline Units::Meters_t operator"" _m(Resources::Float128 value) {
-		return Units::Meters_t(value);
-	}
-
-	inline Units::Centimeters_t operator"" _cm(Resources::Float128 value) {
-		return Units::Centimeters_t(value);
-	}
-
-	static inline Millimeters_t operator"" _mm(Resources::Float128 value) {
-		return Millimeters_t(value);
-	}
-}
-*/

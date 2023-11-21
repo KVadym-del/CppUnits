@@ -64,14 +64,6 @@ namespace Units::Kilometers
 			return static_cast<const T&>(Value_);
 		}
 
-		/*
-		template<typename T = Float128>
-		inline operator T(void) const
-		{
-			return static_cast<const T&>(Value_);
-		}
-		*/
-
 		//-----------------------------------------------------------------------
 
 		friend std::ostream& operator<<(std::ostream& stream, const Kilometers& centimeters) {
