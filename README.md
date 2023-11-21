@@ -7,7 +7,7 @@ Firstly include header file:
 #include "Units/Units.hpp"
 ```
 
-Than you can initialize units like:
+Then you can initialize units like:
 ```cpp
 Millimeters_t millimeters(190001);
 
@@ -20,7 +20,7 @@ Kilometers_t kilometers;
 kilometers = centimeters;
 ```
 ## Usage
-You can use units like normal variables:
+You can use units like common variables:
 ```cpp
 centimeters = centimeters + 120;
 
@@ -29,7 +29,7 @@ std::cout << std::fixed << centimeters << std::endl;
 std::cin >> centimeters;
 ```
 ## Sharing unit as a parameter of function
-You can share unit as a parameter of function in two ways
+You can share unit as a parameter of function in two ways:
 ### 1. Using as class
 ```cpp
 void print(const Millimeters_t& number)

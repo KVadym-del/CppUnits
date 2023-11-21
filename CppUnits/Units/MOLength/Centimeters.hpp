@@ -95,8 +95,24 @@ namespace Units::Centimeters
 				}, variant);
 			return Centimeters(Value_ + getValue);
 		}
+		inline Centimeters operator+=(const Variant& variant) const
+		{
+			Float128 getValue;
+			std::visit([&](const auto& value) {
+				getValue = static_cast<Float128>(value);
+				}, variant);
+			return Centimeters(Value_ + getValue);
+		}
 
 		inline Centimeters operator-(const Variant& variant) const
+		{
+			Float128 getValue;
+			std::visit([&](const auto& value) {
+				getValue = static_cast<Float128>(value);
+				}, variant);
+			return  Centimeters(Value_ - getValue);
+		}
+		inline Centimeters operator-=(const Variant& variant) const
 		{
 			Float128 getValue;
 			std::visit([&](const auto& value) {
@@ -113,8 +129,24 @@ namespace Units::Centimeters
 				}, variant);
 			return Centimeters(Value_ / getValue);
 		}
+		inline Centimeters operator/=(const Variant& variant) const
+		{
+			Float128 getValue;
+			std::visit([&](const auto& value) {
+				getValue = static_cast<Float128>(value);
+				}, variant);
+			return Centimeters(Value_ / getValue);
+		}
 
 		inline Centimeters operator*(const Variant& variant) const
+		{
+			Float128 getValue;
+			std::visit([&](const auto& value) {
+				getValue = static_cast<Float128>(value);
+				}, variant);
+			return Centimeters(Value_ * getValue);
+		}
+		inline Centimeters operator*=(const Variant& variant) const
 		{
 			Float128 getValue;
 			std::visit([&](const auto& value) {

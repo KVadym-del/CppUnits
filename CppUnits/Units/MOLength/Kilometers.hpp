@@ -94,8 +94,25 @@ namespace Units::Kilometers
 				}, variant);
 			return Kilometers(Value_ + getValue);
 		}
+		inline Kilometers operator+=(const Variant& variant) const
+		{
+			Float128 getValue;
+			std::visit([&](const auto& value) {
+				getValue = static_cast<Float128>(value);
+				}, variant);
+			return Kilometers(Value_ + getValue);
+		}
+
 
 		inline Kilometers operator-(const Variant& variant) const
+		{
+			Float128 getValue;
+			std::visit([&](const auto& value) {
+				getValue = static_cast<Float128>(value);
+				}, variant);
+			return  Kilometers(Value_ - getValue);
+		}
+		inline Kilometers operator-=(const Variant& variant) const
 		{
 			Float128 getValue;
 			std::visit([&](const auto& value) {
@@ -112,8 +129,24 @@ namespace Units::Kilometers
 				}, variant);
 			return Kilometers(Value_ / getValue);
 		}
+		inline Kilometers operator/=(const Variant& variant) const
+		{
+			Float128 getValue;
+			std::visit([&](const auto& value) {
+				getValue = static_cast<Float128>(value);
+				}, variant);
+			return Kilometers(Value_ / getValue);
+		}
 
 		inline Kilometers operator*(const Variant& variant) const
+		{
+			Float128 getValue;
+			std::visit([&](const auto& value) {
+				getValue = static_cast<Float128>(value);
+				}, variant);
+			return Kilometers(Value_ * getValue);
+		}
+		inline Kilometers operator*=(const Variant& variant) const
 		{
 			Float128 getValue;
 			std::visit([&](const auto& value) {

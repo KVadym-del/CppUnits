@@ -87,8 +87,24 @@ namespace Units::Millimeters
 				}, variant);
 			return Millimeters(Value_ + getValue);
 		}
+		inline Millimeters operator+=(const Variant& variant) const
+		{
+			Float128 getValue;
+			std::visit([&](const auto& value) {
+				getValue = static_cast<Float128>(value);
+				}, variant);
+			return Millimeters(Value_ + getValue);
+		}
 
 		inline Millimeters operator-(const Variant& variant) const
+		{
+			Float128 getValue;
+			std::visit([&](const auto& value) {
+				getValue = static_cast<Float128>(value);
+				}, variant);
+			return  Millimeters(Value_ - getValue);
+		}
+		inline Millimeters operator-=(const Variant& variant) const
 		{
 			Float128 getValue;
 			std::visit([&](const auto& value) {
@@ -105,8 +121,24 @@ namespace Units::Millimeters
 				}, variant);
 			return Millimeters(Value_ / getValue);
 		}
+		inline Millimeters operator/=(const Variant& variant) const
+		{
+			Float128 getValue;
+			std::visit([&](const auto& value) {
+				getValue = static_cast<Float128>(value);
+				}, variant);
+			return Millimeters(Value_ / getValue);
+		}
 
 		inline Millimeters operator*(const Variant& variant) const
+		{
+			Float128 getValue;
+			std::visit([&](const auto& value) {
+				getValue = static_cast<Float128>(value);
+				}, variant);
+			return  Millimeters(Value_ * getValue);
+		}
+		inline Millimeters operator*=(const Variant& variant) const
 		{
 			Float128 getValue;
 			std::visit([&](const auto& value) {

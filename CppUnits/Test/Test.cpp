@@ -27,9 +27,12 @@ int main(void)
 	meters = centimeters;
 	millimeters = kilometers;
 
-	std::cin >> centimeters;
+	//std::cin >> centimeters;
 
-	print(meters());
-	print(millimeters);
+	//print(meters());
+	//print(millimeters);
 
+	print(kilometers());
+	kilometers += 1;
+	print(kilometers());
 }
