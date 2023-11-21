@@ -5,16 +5,16 @@
 
 #include "../Units.hpp"
 
-namespace Units::Centimeters
+namespace Units::Micrometers
 {
 	using namespace Units;
 	using namespace Units::Resources;
 
-	class Centimeters : public BaseUnit::BaseUnit
+	class Micrometers : public BaseUnit::BaseUnit
 	{
 	public:
-		Centimeters() = default;
-		explicit Centimeters(const Variant& variant)
+		Micrometers() = default;
+		explicit Micrometers(const Variant& variant)
 		{
 			std::visit([&](const auto& value) {
 				Value_ = static_cast<Float128>(value);
@@ -28,10 +28,10 @@ namespace Units::Centimeters
 				}, variant);
 		}
 
-		inline Centimeters operator=(const Micrometers::Micrometers& micrometers) const;
-		inline Centimeters operator=(const Millimeters::Millimeters& millimeters) const;
-		inline Centimeters operator=(const Meters::Meters& meters) const;
-		inline Centimeters operator=(const Kilometers::Kilometers& kilometers) const;
+		inline Micrometers operator=(const Millimeters::Millimeters& millimeters) const;
+		inline Micrometers operator=(const Centimeters::Centimeters& centimeters) const;
+		inline Micrometers operator=(const Meters::Meters& meters) const;
+		inline Micrometers operator=(const Kilometers::Kilometers& kilometers) const;
 
 		inline bool operator==(const Variant& variant) const override
 		{
@@ -68,89 +68,89 @@ namespace Units::Centimeters
 
 		//-----------------------------------------------------------------------
 
-		friend std::ostream& operator<<(std::ostream& stream, const Centimeters& centimeters) {
-			stream << centimeters.Value_;
+		friend std::ostream& operator<<(std::ostream& stream, const Micrometers& Micrometers) {
+			stream << Micrometers.Value_;
 			return stream;
 		}
 
-		friend std::istream& operator>>(std::istream& stream, const Centimeters& centimeters) {
+		friend std::istream& operator>>(std::istream& stream, const Micrometers& Micrometers) {
 			std::string in;
 			stream >> in;
 			Value_ = std::stold(in);
 			return stream;
 		}
 
-		inline Centimeters operator+(const Variant& variant) const 
+		inline Micrometers operator+(const Variant& variant) const
 		{
 			Float128 getValue;
 			std::visit([&](const auto& value) {
 				getValue = static_cast<Float128>(value);
 				}, variant);
-			return Centimeters(Value_ + getValue);
+			return Micrometers(Value_ + getValue);
 		}
-		inline Centimeters operator+=(const Variant& variant) const
+		inline Micrometers operator+=(const Variant& variant) const
 		{
 			Float128 getValue;
 			std::visit([&](const auto& value) {
 				getValue = static_cast<Float128>(value);
 				}, variant);
-			return Centimeters(Value_ + getValue);
-		}
-
-		inline Centimeters operator-(const Variant& variant) const
-		{
-			Float128 getValue;
-			std::visit([&](const auto& value) {
-				getValue = static_cast<Float128>(value);
-				}, variant);
-			return  Centimeters(Value_ - getValue);
-		}
-		inline Centimeters operator-=(const Variant& variant) const
-		{
-			Float128 getValue;
-			std::visit([&](const auto& value) {
-				getValue = static_cast<Float128>(value);
-				}, variant);
-			return  Centimeters(Value_ - getValue);
+			return Micrometers(Value_ + getValue);
 		}
 
-		inline Centimeters operator/(const Variant& variant) const
+		inline Micrometers operator-(const Variant& variant) const
 		{
 			Float128 getValue;
 			std::visit([&](const auto& value) {
 				getValue = static_cast<Float128>(value);
 				}, variant);
-			return Centimeters(Value_ / getValue);
+			return  Micrometers(Value_ - getValue);
 		}
-		inline Centimeters operator/=(const Variant& variant) const
+		inline Micrometers operator-=(const Variant& variant) const
 		{
 			Float128 getValue;
 			std::visit([&](const auto& value) {
 				getValue = static_cast<Float128>(value);
 				}, variant);
-			return Centimeters(Value_ / getValue);
+			return  Micrometers(Value_ - getValue);
 		}
 
-		inline Centimeters operator*(const Variant& variant) const
+		inline Micrometers operator/(const Variant& variant) const
 		{
 			Float128 getValue;
 			std::visit([&](const auto& value) {
 				getValue = static_cast<Float128>(value);
 				}, variant);
-			return Centimeters(Value_ * getValue);
+			return Micrometers(Value_ / getValue);
 		}
-		inline Centimeters operator*=(const Variant& variant) const
+		inline Micrometers operator/=(const Variant& variant) const
 		{
 			Float128 getValue;
 			std::visit([&](const auto& value) {
 				getValue = static_cast<Float128>(value);
 				}, variant);
-			return Centimeters(Value_ * getValue);
+			return Micrometers(Value_ / getValue);
+		}
+
+		inline Micrometers operator*(const Variant& variant) const
+		{
+			Float128 getValue;
+			std::visit([&](const auto& value) {
+				getValue = static_cast<Float128>(value);
+				}, variant);
+			return  Micrometers(Value_ * getValue);
+		}
+		inline Micrometers operator*=(const Variant& variant) const
+		{
+			Float128 getValue;
+			std::visit([&](const auto& value) {
+				getValue = static_cast<Float128>(value);
+				}, variant);
+			return  Micrometers(Value_ * getValue);
 		}
 
 		//-----------------------------------------------------------------------
 
-		compl Centimeters() override = default;
+		compl Micrometers() override = default;
 
 	private:
 		inline static Float128 Value_ = 0;

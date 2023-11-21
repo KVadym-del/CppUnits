@@ -28,6 +28,7 @@ namespace Units::Millimeters
 				}, variant);
 		}
 
+		inline Millimeters operator=(const Micrometers::Micrometers& micrometers) const;
 		inline Millimeters operator=(const Centimeters::Centimeters& centimeters) const;
 		inline Millimeters operator=(const Meters::Meters& meters) const;
 		inline Millimeters operator=(const Kilometers::Kilometers& kilometers) const;

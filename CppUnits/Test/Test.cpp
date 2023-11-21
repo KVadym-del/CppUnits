@@ -22,11 +22,13 @@ int main(void)
 	Meters_t meters{ 14.2473738 };
 	Kilometers_t kilometers;
 	kilometers = centimeters;
+	Micrometers_t micrometers(1200000000);
 
 	//centimeters = centimeters + 120;
 	meters = centimeters;
 	millimeters = centimeters;
 	kilometers = millimeters;
+	kilometers = micrometers;
 
 	//std::cin >> centimeters;
 

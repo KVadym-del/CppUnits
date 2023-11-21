@@ -21,6 +21,7 @@ namespace Units::Ratio
 		return castedValue;
 	}
 
+	using Micrometers_ratio		=	std::micro;
 	using Millimeters_ratio		=	std::milli;
 	using Centimeters_ratio		=	std::centi;
 	using Meters_ratio			=	std::ratio<1>;

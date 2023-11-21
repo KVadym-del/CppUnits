@@ -27,6 +27,7 @@ namespace Units::Kilometers
 				}, variant);
 		}
 
+		inline Kilometers operator=(const Micrometers::Micrometers& micrometers) const;
 		inline Kilometers operator=(const Millimeters::Millimeters& millimeters) const;
 		inline Kilometers operator=(const Centimeters::Centimeters& centimeters) const;
 		inline Kilometers operator=(const Meters::Meters& meters) const;

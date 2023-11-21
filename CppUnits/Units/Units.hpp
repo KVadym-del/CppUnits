@@ -5,7 +5,10 @@
 #include "Resources.hpp"
 #include "UnitsRatio.hpp"
 
-
+namespace Units::Micrometers
+{
+	class Micrometers;
+}
 namespace Units::Millimeters
 {
 	class Millimeters;
@@ -23,6 +26,7 @@ namespace Units::Kilometers
 	class Kilometers;
 }
 
+#include "MOLength/Micrometers.hpp"
 #include "MOLength/Millimeters.hpp"
 #include "MOLength/Centimeters.hpp"
 #include "MOLength/Meters.hpp"
@@ -30,6 +34,7 @@ namespace Units::Kilometers
 
 namespace Units
 {
+	using Micrometers_t		=	Micrometers::Micrometers;
 	using Millimeters_t		=	Millimeters::Millimeters;
 	using Centimeters_t		=	Centimeters::Centimeters;
 	using Meters_t			=	Meters::Meters;
@@ -42,9 +47,38 @@ namespace Units
 	}
 }
 
+namespace Units::Micrometers
+{
+	using namespace Ratio;
+	inline Micrometers Micrometers::operator=(const Centimeters::Centimeters& centimeters) const
+	{
+		return convert<Micrometers_t, Micrometers_ratio, Centimeters_ratio, Centimeters_t>(centimeters);
+	}
+
+	inline Micrometers Micrometers::operator=(const Millimeters::Millimeters& millimeters) const
+	{
+		return convert<Micrometers_t, Micrometers_ratio, Millimeters_ratio, Millimeters_t>(millimeters);
+	}
+
+	inline Micrometers Micrometers::operator=(const Meters::Meters& meters) const
+	{
+		return convert<Micrometers_t, Micrometers_ratio, Meters_ratio, Meters_t>(meters);
+	}
+
+	inline Micrometers Micrometers::operator=(const Kilometers::Kilometers& kilometers) const
+	{
+		return convert<Micrometers_t, Micrometers_ratio, Kilometers_ratio, Kilometers_t>(kilometers);
+	}
+}
+
 namespace Units::Millimeters
 {
 	using namespace Ratio;
+	inline Millimeters Millimeters::operator=(const Micrometers::Micrometers& micrometers) const
+	{
+		return convert<Millimeters_t, Millimeters_ratio, Micrometers_ratio, Micrometers_t>(micrometers);
+	}
+
 	inline Millimeters Millimeters::operator=(const Centimeters::Centimeters& centimeters) const
 	{
 		return convert<Millimeters_t, Millimeters_ratio, Centimeters_ratio, Centimeters_t>(centimeters);
@@ -64,6 +98,11 @@ namespace Units::Millimeters
 namespace Units::Centimeters
 {
 	using namespace Ratio;
+	inline Centimeters Centimeters::operator=(const Micrometers::Micrometers& micrometers) const
+	{
+		return convert<Centimeters_t, Centimeters_ratio, Micrometers_ratio, Micrometers_t>(micrometers);
+	}
+
 	inline Centimeters Centimeters::operator=(const Millimeters::Millimeters& millimeters) const
 	{
 		return convert<Centimeters_t, Centimeters_ratio, Millimeters_ratio, Millimeters_t>(millimeters);
@@ -83,6 +122,11 @@ namespace Units::Centimeters
 namespace Units::Meters
 {
 	using namespace Ratio;
+	inline Meters Meters::operator=(const Micrometers::Micrometers& micrometers) const
+	{
+		return convert<Meters_t, Meters_ratio, Micrometers_ratio, Micrometers_t>(micrometers);
+	}
+
 	inline Meters Meters::operator=(const Millimeters::Millimeters& millimeters) const
 	{
 		return convert<Meters_t, Meters_ratio, Millimeters_ratio, Millimeters_t>(millimeters);
@@ -103,6 +147,11 @@ namespace Units::Meters
 namespace Units::Kilometers
 {
 	using namespace Ratio;
+	inline Kilometers Kilometers::operator=(const Micrometers::Micrometers& micrometers) const
+	{
+		return convert<Kilometers_t, Kilometers_ratio, Micrometers_ratio, Micrometers_t>(micrometers);
+	}
+
 	inline Kilometers Kilometers::operator=(const Millimeters::Millimeters& millimeters) const
 	{
 		return convert<Kilometers_t, Kilometers_ratio, Millimeters_ratio, Millimeters_t>(millimeters);

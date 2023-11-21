@@ -27,6 +27,7 @@
     <ClInclude Include="CppUnits\Units\Units.hpp" />
     <ClInclude Include="CppUnits\Units\UnitsRatio.hpp" />
     <ClInclude Include="CppUnits\Units\MOLength\Kilometers.hpp" />
+    <ClInclude Include="CppUnits\Units\MOLength\Micrometers.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppUnits\Test\Test.cpp" />
