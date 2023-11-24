@@ -9,11 +9,6 @@ void print(const Resources::Float128& number)
 	std::cout << std::fixed << number << std::endl;
 }
 
-void print(const Kilometers_t& number)
-{
-	std::cout << std::fixed << number << std::endl;
-}
-
 int main(void)
 {
 	const Micrometers_t micrometers(6643263471583);
@@ -32,6 +27,7 @@ int main(void)
 
 	//std::cin >> centimeters;
 
-	print(meters());
-	print(kilometers);
+	print(*micrometers);
+	print(*kilometers);
+	print(*millimeters);
 }

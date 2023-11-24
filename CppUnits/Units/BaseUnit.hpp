@@ -18,5 +18,7 @@ namespace Units::BaseUnit
 
 		virtual inline void operator()(const Variant& variant) const = 0;
 
+		virtual inline operator const Float128* (void) const = 0;
+
 	};
 }

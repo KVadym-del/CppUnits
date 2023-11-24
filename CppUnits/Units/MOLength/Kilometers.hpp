@@ -59,10 +59,9 @@ namespace Units::Kilometers
 			Value_ = getValue;
 		}
 
-		template<typename T = Float128>
-		inline const T& operator()(void) const
+		inline operator const Float128* (void) const override
 		{
-			return static_cast<const T&>(Value_);
+			return static_cast<const Float128*>(&Value_);
 		}
 
 		//-----------------------------------------------------------------------

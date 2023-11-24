@@ -2,7 +2,6 @@
 #include <ratio>
 
 #include "UnitsRatio.hpp"
-#include "Resources.hpp"
 
 namespace Units::Micrometers
 {
@@ -45,14 +44,15 @@ namespace Units
 	template<typename To, typename ToRatio, typename FromRatio, typename FromValue>
 	inline constexpr To convertor(const FromValue& fromValue)
 	{
-		return To(Ratio::castToSi<ToRatio>(fromValue()) / Ratio::castToSi<FromRatio>(1));
+		return To(Ratio::castToSi<ToRatio>(*fromValue) / Ratio::castToSi<FromRatio>(1));
 	}
 }
 
-#define UNIT_DEFINER(To, From) 	inline To To::operator=(const From::From& unit) const\
-	{\
-		return convertor<To, To##_ratio, From##_ratio, From::From>(unit);\
-	}\
+#define UNIT_DEFINER(To, From) \
+inline To To::operator=(const From::From& unit) const \
+	{ \
+		return convertor<To, To##_ratio, From##_ratio, From::From>(unit); \
+	} \
 
 namespace Units::Micrometers
 {
