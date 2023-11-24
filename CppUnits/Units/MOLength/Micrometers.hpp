@@ -19,7 +19,7 @@ namespace Units::Micrometers
 			std::visit([&](const auto& value) {
 				Value_ = static_cast<Float128>(value);
 				}, variant);
-		};
+		}
 
 		inline constexpr void operator=(const Variant& variant) const override
 		{
