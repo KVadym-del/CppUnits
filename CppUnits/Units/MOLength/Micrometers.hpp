@@ -4,7 +4,7 @@
 #include "../BaseUnit.hpp"
 
 #include "../Units.hpp"
-
+#include "../Resources.hpp"
 namespace Units::Micrometers
 {
 	using namespace Units;
@@ -19,7 +19,7 @@ namespace Units::Micrometers
 			std::visit([&](const auto& value) {
 				Value_ = static_cast<Float128>(value);
 				}, variant);
-		};
+		}
 
 		inline constexpr void operator=(const Variant& variant) const override
 		{

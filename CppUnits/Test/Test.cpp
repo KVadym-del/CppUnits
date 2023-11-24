@@ -16,13 +16,13 @@ void print(const Kilometers_t& number)
 
 int main(void)
 {
+	const Micrometers_t micrometers(6643263471583);
 	Millimeters_t millimeters(190001);
 	Centimeters_t centimeters;
 	centimeters = 24.24;
 	Meters_t meters{ 14.2473738 };
 	Kilometers_t kilometers;
 	kilometers = centimeters;
-	Micrometers_t micrometers(1200000000);
 
 	//centimeters = centimeters + 120;
 	meters = centimeters;
@@ -32,10 +32,6 @@ int main(void)
 
 	//std::cin >> centimeters;
 
-	//print(meters());
+	print(meters());
 	print(kilometers);
-
-	//print(kilometers());
-	kilometers += 1;
-	//print(kilometers());
 }
